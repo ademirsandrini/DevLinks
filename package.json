@@ -1,0 +1,40 @@
+{
+  "name": "devlinks",
+  "version": "1.0.0",
+  "description": "![cover](assets/cover.jpg)",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write \"**/*.{html,css,md}\"",
+    "lint:html": "htmlhint index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ademirsandrini/DevLinks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{html,css,md}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ademirsandrini/DevLinks/issues"
+  },
+  "homepage": "https://github.com/ademirsandrini/DevLinks#readme",
+  "devDependencies": {
+    "htmlhint": "^1.9.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.4",
+    "prettier": "^3.8.3"
+  }
+}
