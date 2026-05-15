@@ -6,59 +6,58 @@
 
 :root {
   --text-color: white;
-  --bg-url: url(assets/bg-mobile.jpg);
+  --bg-url: url(./assets/bg-mobile.jpg);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(255, 255, 255, 0.2);
-  --switch-bg-url: url(assets/moon-stars.svg);
+  --switch-bg-url: url(./assets/moon-stars.svg);
 }
 
 .light {
   --text-color: black;
-  --bg-url: url(assets/bg-mobile-light.jpg);
+  --bg-url: url(./assets/bg-mobile-light.jpg);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
   --highlight-color: rgba(0, 0, 0, 0.1);
-  --switch-bg-url: url(assets/sun.svg);
+  --switch-bg-url: url(./assets/sun.svg);
 }
 
 body {
   background: var(--bg-url) no-repeat top center/cover;
-  color: var(--text-color);
-  margin: 0;
-  font-family:
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial;
-}
-
-body * {
+  height: 100vh;
   font-family: "Inter", sans-serif;
   color: var(--text-color);
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   margin: 56px auto 0;
   padding: 0 24px;
 }
 
+/* Profile */
 #profile {
   text-align: center;
   padding: 24px;
 }
 
+#profile img {
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 #profile p {
   font-weight: 500;
-  font-size: 24px;
+  line-height: 24px;
   margin-top: 8px;
 }
 
+/* Switch */
 #switch {
   position: relative;
   width: 64px;
@@ -98,25 +97,7 @@ body * {
   border-radius: 9999px;
 }
 
-.profile-pic {
-  display: block;
-  width: 112px;
-  height: 112px;
-  object-fit: cover;
-  margin: 0 auto;
-  border-radius: 50%;
-  object-position: 50% calc(50% + 8px);
-  transition:
-    transform 0.2s ease,
-    object-position 0.2s ease;
-}
-
-.profile-pic.is-light {
-  object-position: 50% 42%;
-  transform: scale(1.1);
-}
-
-/* links */
+/* Links */
 ul {
   list-style: none;
   display: flex;
@@ -129,7 +110,6 @@ ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 16px 24px;
   background: var(--surface-color);
   border: 1px solid var(--stroke-color);
@@ -141,11 +121,16 @@ ul li a {
   transition: background 0.2s;
 }
 
+ul li a.multiline-link {
+  text-align: center;
+}
+
 ul li a:hover {
   background: var(--surface-color-hover);
   border: 1.5px solid var(--text-color);
 }
 
+/* Social Links */
 #social-links {
   display: flex;
   justify-content: center;
@@ -172,6 +157,7 @@ footer {
   font-size: 14px;
 }
 
+/* Media Queries */
 @media (min-width: 700px) {
   :root {
     --bg-url: url(./assets/bg-desktop.jpg);
@@ -182,7 +168,7 @@ footer {
   }
 }
 
-/* animation */
+/* Animation */
 @keyframes slide-in {
   from {
     left: 0;
