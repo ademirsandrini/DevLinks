@@ -6,7 +6,7 @@ function updateProfileImage() {
 
   const isLight = html.classList.contains("light");
 
-  avatar.setAttribute("src", isLight ? "assets/avatar-light.jpg" : "assets/avatar.jpg");
+  avatar.setAttribute("src", isLight ? "assets/avatar-light.png" : "assets/avatar.png");
   avatar.classList.toggle("is-light", isLight);
 }
 
