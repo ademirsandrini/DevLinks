@@ -1,20 +1,17 @@
-function updateProfileImage() {
-  const html = document.documentElement;
-  const avatar = document.querySelector("#profile img");
+const html = document.documentElement;
+const avatar = document.querySelector("#profile img");
 
+function updateProfileImage() {
   if (!avatar) return;
 
-  if (html.classList.contains("light")) {
-    avatar.setAttribute("src", "assets/avatar-light.jpg");
-    avatar.classList.add("is-light");
-  } else {
-    avatar.setAttribute("src", "assets/avatar.jpg");
-    avatar.classList.remove("is-light");
-  }
+  const isLight = html.classList.contains("light");
+
+  avatar.setAttribute("src", isLight ? "assets/avatar-light.png" : "assets/avatar.png");
+  avatar.classList.toggle("is-light", isLight);
 }
 
 function toggleMode() {
-  document.documentElement.classList.toggle("light");
+  html.classList.toggle("light");
   updateProfileImage();
 }
 

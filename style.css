@@ -7,28 +7,58 @@
 :root {
   --text-color: white;
   --bg-url: url(./assets/bg-mobile.jpg);
+  --bg-bottom-shade: rgba(0, 18, 48, 0.28);
+  --circuit-glow: rgba(0, 168, 255, 0.28);
+  --circuit-band: rgba(0, 128, 255, 0.22);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
-  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --surface-color-hover: rgba(255, 255, 255, 0.14);
+  --hover-border-color: rgba(255, 255, 255, 0.95);
   --highlight-color: rgba(255, 255, 255, 0.2);
   --switch-bg-url: url(./assets/moon-stars.svg);
 }
 
 .light {
-  --text-color: black;
+  --text-color: #1a1a1a;
   --bg-url: url(./assets/bg-mobile-light.jpg);
+  --bg-bottom-shade: rgba(0, 84, 170, 0.12);
+  --circuit-glow: rgba(0, 168, 255, 0.24);
+  --circuit-band: rgba(0, 128, 255, 0.18);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
-  --surface-color-hover: rgba(0, 0, 0, 0.02);
-  --highlight-color: rgba(0, 0, 0, 0.1);
+  --surface-color-hover: rgba(0, 0, 0, 0.1);
+  --hover-border-color: rgba(0, 0, 0, 0.9);
+  --highlight-color: rgba(0, 0, 0, 0.16);
   --switch-bg-url: url(./assets/sun.svg);
 }
 
 body {
-  background: var(--bg-url) no-repeat top center/cover;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
+  background-image:
+    linear-gradient(to top, var(--bg-bottom-shade) 0%, rgba(0, 0, 0, 0) 40%), var(--bg-url);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
   font-family: "Inter", sans-serif;
   color: var(--text-color);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, var(--circuit-glow), rgba(0, 168, 255, 0) 46%),
+    linear-gradient(
+      to bottom,
+      var(--circuit-band) 0%,
+      rgba(0, 0, 0, 0) 18%,
+      rgba(0, 0, 0, 0) 82%,
+      var(--circuit-band) 100%
+    );
+  mix-blend-mode: soft-light;
 }
 
 #container {
@@ -49,6 +79,11 @@ body {
   height: 112px;
   border-radius: 50%;
   object-fit: cover;
+  object-position: center 35%;
+}
+
+#profile img.is-light {
+  object-position: center 35%;
 }
 
 #profile p {
@@ -117,8 +152,12 @@ ul li a {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   text-decoration: none;
+  color: var(--text-color);
   font-weight: 500;
-  transition: background 0.2s;
+  transition:
+    background 0.2s,
+    border-color 0.2s,
+    color 0.2s;
 }
 
 ul li a.multiline-link {
@@ -127,7 +166,7 @@ ul li a.multiline-link {
 
 ul li a:hover {
   background: var(--surface-color-hover);
-  border: 1.5px solid var(--text-color);
+  border: 1.5px solid var(--hover-border-color);
 }
 
 /* Social Links */
@@ -143,12 +182,19 @@ ul li a:hover {
   align-items: center;
   justify-content: center;
   padding: 16px;
-  transition: background 0.2s;
+  color: var(--text-color);
+  transition:
+    background 0.2s,
+    color 0.2s;
   border-radius: 50%;
 }
 
 #social-links a:hover {
   background: var(--highlight-color);
+}
+
+footer a {
+  color: var(--text-color);
 }
 
 footer {
@@ -161,10 +207,16 @@ footer {
 @media (min-width: 700px) {
   :root {
     --bg-url: url(./assets/bg-desktop.jpg);
+    --bg-bottom-shade: rgba(0, 18, 48, 0.34);
+    --circuit-glow: rgba(0, 168, 255, 0.28);
+    --circuit-band: rgba(0, 128, 255, 0.22);
   }
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+    --bg-bottom-shade: rgba(0, 84, 170, 0.16);
+    --circuit-glow: rgba(0, 168, 255, 0.24);
+    --circuit-band: rgba(0, 128, 255, 0.18);
   }
 }
 
