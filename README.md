@@ -21,8 +21,8 @@ Para trocar, substitua `assets/cover.jpg` pelo arquivo desejado mantendo o mesmo
 
 Avatar
 
-- Avatar para tema escuro: `assets/avatar.jpg`
-- Avatar para tema claro: `assets/avatar-light.jpg`
+- Avatar para tema escuro: `assets/avatar.png` ou `assets/avatar.jpg`
+- Avatar para tema claro: `assets/avatar-light.png` ou `assets/avatar-light.jpg`
 
 Contribuição
 
