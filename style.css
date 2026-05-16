@@ -7,7 +7,9 @@
 :root {
   --text-color: white;
   --bg-url: url(./assets/bg-mobile.jpg);
-  --bg-bottom-shade: rgba(0, 0, 0, 0.22);
+  --bg-bottom-shade: rgba(0, 18, 48, 0.28);
+  --circuit-glow: rgba(0, 168, 255, 0.28);
+  --circuit-band: rgba(0, 128, 255, 0.22);
   --stroke-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(255, 255, 255, 0.14);
@@ -19,7 +21,9 @@
 .light {
   --text-color: #1a1a1a;
   --bg-url: url(./assets/bg-mobile-light.jpg);
-  --bg-bottom-shade: rgba(0, 0, 0, 0.14);
+  --bg-bottom-shade: rgba(0, 84, 170, 0.12);
+  --circuit-glow: rgba(0, 168, 255, 0.24);
+  --circuit-band: rgba(0, 128, 255, 0.18);
   --stroke-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.1);
@@ -29,14 +33,32 @@
 }
 
 body {
+  position: relative;
+  min-height: 100vh;
   background-image:
     linear-gradient(to top, var(--bg-bottom-shade) 0%, rgba(0, 0, 0, 0) 40%), var(--bg-url);
   background-repeat: no-repeat;
   background-position: top center;
   background-size: cover;
-  height: 100vh;
   font-family: "Inter", sans-serif;
   color: var(--text-color);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 50%, var(--circuit-glow), rgba(0, 168, 255, 0) 46%),
+    linear-gradient(
+      to bottom,
+      var(--circuit-band) 0%,
+      rgba(0, 0, 0, 0) 18%,
+      rgba(0, 0, 0, 0) 82%,
+      var(--circuit-band) 100%
+    );
+  mix-blend-mode: soft-light;
 }
 
 #container {
@@ -185,10 +207,16 @@ footer {
 @media (min-width: 700px) {
   :root {
     --bg-url: url(./assets/bg-desktop.jpg);
+    --bg-bottom-shade: rgba(0, 18, 48, 0.34);
+    --circuit-glow: rgba(0, 168, 255, 0.28);
+    --circuit-band: rgba(0, 128, 255, 0.22);
   }
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+    --bg-bottom-shade: rgba(0, 84, 170, 0.16);
+    --circuit-glow: rgba(0, 168, 255, 0.24);
+    --circuit-band: rgba(0, 128, 255, 0.18);
   }
 }
 
